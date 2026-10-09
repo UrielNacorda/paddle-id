@@ -91,6 +91,10 @@ socialLinks.forEach((social) => {
 
 const postFeed = $("postFeed");
 const postViewer = $("postViewer");
+const imageViewer = $("imageViewer");
+const viewerPhoto = imageViewer.querySelector("img");
+const profilePhotoSrc = viewerPhoto.src;
+const profilePhotoAlt = viewerPhoto.alt;
 
 function makeElement(tag, className, text) {
   const element = document.createElement(tag);
@@ -160,7 +164,6 @@ function buildPost(post) {
   photo.alt = post.caption;
   photoButton.append(photo);
   photoButton.addEventListener("click", () => {
-    const viewerPhoto = imageViewer.querySelector("img");
     viewerPhoto.src = post.image;
     viewerPhoto.alt = post.caption;
     imageViewer.showModal();
@@ -281,8 +284,11 @@ sheet.addEventListener("click", (e) => {
 });
 
 // ---------- Profile image viewer ----------
-const imageViewer = $("imageViewer");
-$("imageOpen").addEventListener("click", () => imageViewer.showModal());
+$("imageOpen").addEventListener("click", () => {
+  viewerPhoto.src = profilePhotoSrc;
+  viewerPhoto.alt = profilePhotoAlt;
+  imageViewer.showModal();
+});
 $("imageClose").addEventListener("click", () => imageViewer.close());
 imageViewer.addEventListener("click", (e) => {
   if (e.target === imageViewer) imageViewer.close();
