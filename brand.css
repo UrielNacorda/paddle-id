@@ -541,6 +541,38 @@ a:focus-visible {
   line-height: 0.98;
 }
 
+.contact {
+  display: grid;
+  grid-template-columns: minmax(0, 680px);
+  padding: 100px max(8vw, calc((100vw - 1120px) / 2));
+  background: #eeecdf;
+}
+
+.contact__copy .eyebrow {
+  color: var(--court);
+}
+
+.contact__copy .eyebrow > span {
+  background: var(--court);
+}
+
+.contact__copy h2 {
+  margin: 0;
+  font: 600 clamp(2.7rem, 5vw, 4rem) / 1.02 var(--serif);
+  letter-spacing: -0.055em;
+}
+
+.contact__copy h2 em {
+  color: var(--court);
+}
+
+.contact__copy > p:not(.eyebrow) {
+  max-width: 390px;
+  margin: 20px 0 24px;
+  color: var(--mute);
+  line-height: 1.7;
+}
+
 .button--light {
   color: var(--pine);
 }
@@ -604,6 +636,11 @@ a:focus-visible {
 
   .manifesto {
     gap: 5%;
+  }
+
+  .contact {
+    padding-right: 7vw;
+    padding-left: 7vw;
   }
 }
 
@@ -692,6 +729,11 @@ a:focus-visible {
   .manifesto {
     grid-template-columns: 1fr;
     gap: 42px;
+    padding: 74px 24px;
+  }
+
+  .contact {
+    grid-template-columns: 1fr;
     padding: 74px 24px;
   }
 
