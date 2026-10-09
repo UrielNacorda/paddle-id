@@ -269,13 +269,39 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
   padding: max(12px, env(safe-area-inset-top)) 16px 12px;
   background: rgba(246, 243, 232, 0.92);
   backdrop-filter: blur(8px);
 }
+.bar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--pine);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  text-decoration: none;
+}
+.bar__brand .brand-mark {
+  display: block;
+  width: 24px;
+  height: 30px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+.bar__brand span span {
+  color: var(--court);
+}
+.bar__account {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 .bar__user {
   margin: 0;
-  font: 700 1.25rem var(--sans);
+  font: 700 0.92rem var(--sans);
   display: flex;
   align-items: center;
   gap: 6px;
