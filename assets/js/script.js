@@ -79,6 +79,16 @@ const palettes = [
     colors: ["#3d1f2b", "#843b55", "#fff4f1", "#351824", "#f4a261"],
   },
   {
+    id: "pink",
+    name: "Pink",
+    colors: ["#57243a", "#c65377", "#fff1f5", "#351824", "#f28cae"],
+  },
+  {
+    id: "pastel-yellow",
+    name: "Pastel Yellow",
+    colors: ["#6b5a00", "#d1a900", "#fff9c9", "#3d3500", "#f6d84a"],
+  },
+  {
     id: "lavender",
     name: "Lavender Night",
     colors: ["#2e1a47", "#563879", "#f7f2ff", "#26143d", "#f2c14e"],

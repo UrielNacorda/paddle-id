@@ -301,14 +301,16 @@ button {
 }
 .bar__user {
   margin: 0;
-  font: 700 0.92rem var(--sans);
+  color: var(--mute);
+  font: 600 0.78rem var(--sans);
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  gap: 4px;
 }
 .verified {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
 }
 .icon-btn {
   width: 40px;
@@ -421,6 +423,13 @@ button {
   align-items: center;
   gap: 22px;
   padding: 8px 16px 0;
+}
+.head__profile {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
 }
 .ring {
   flex: none;
