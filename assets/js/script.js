@@ -31,21 +31,21 @@ const socialLinks = [
 const posts = [
   {
     id: "pic2",
-    image: "img/Pic2.jpg",
+    image: "assets/images/Pic2.jpg",
     caption: "Getting started on the court! 🏓",
     liked: false,
     comments: [],
   },
   {
     id: "op1",
-    image: "img/OP1.jpg",
+    image: "assets/images/OP1.jpg",
     caption: "Open play — learning one rally at a time.",
     liked: false,
     comments: [],
   },
   {
     id: "op2",
-    image: "img/OP2.jpg",
+    image: "assets/images/OP2.jpg",
     caption: "Another great day for open play.",
     liked: false,
     comments: [],
@@ -147,7 +147,7 @@ function buildPost(post) {
 
   const header = makeElement("header", "post-card__header");
   const avatar = makeElement("img", "post-card__avatar");
-  avatar.src = "Pic1.jpg";
+  avatar.src = "assets/images/Pic1.jpg";
   avatar.alt = "";
   header.append(avatar);
   const account = makeElement("div");

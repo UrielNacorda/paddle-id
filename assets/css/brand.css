@@ -503,7 +503,7 @@ a:focus-visible {
   width: 112px;
   height: 112px;
   object-fit: contain;
-  background: center / contain no-repeat url("favicon.svg");
+  background: center / contain no-repeat url("../images/favicon.svg");
 }
 
 .manifesto h2 {
