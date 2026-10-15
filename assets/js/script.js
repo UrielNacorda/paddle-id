@@ -57,6 +57,122 @@ const posts = [
 const $ = (id) => document.getElementById(id);
 const sheet = $("sheet");
 
+// ---------- Color themes ----------
+const themePicker = $("themePicker");
+const themeList = $("themeList");
+const themeStatus = $("themeStatus");
+const paletteStorageKey = "paddleIdPalette";
+const palettes = [
+  {
+    id: "court",
+    name: "Classic Court",
+    colors: ["#0e3a2b", "#17553e", "#f6f3e8", "#0b2b20", "#dcea4a"],
+  },
+  {
+    id: "ocean",
+    name: "Coastal Blue",
+    colors: ["#102a43", "#1d4e89", "#f0f7ff", "#102a43", "#ffb703"],
+  },
+  {
+    id: "rose",
+    name: "Rosewood",
+    colors: ["#3d1f2b", "#843b55", "#fff4f1", "#351824", "#f4a261"],
+  },
+  {
+    id: "lavender",
+    name: "Lavender Night",
+    colors: ["#2e1a47", "#563879", "#f7f2ff", "#26143d", "#f2c14e"],
+  },
+  {
+    id: "slate",
+    name: "Slate & Citrus",
+    colors: ["#243b53", "#486581", "#f5f7fa", "#1f2933", "#ff9f43"],
+  },
+];
+let selectedPalette = palettes[0].id;
+
+function applyPalette(id, save = true) {
+  const palette = palettes.find((item) => item.id === id);
+  if (!palette) return false;
+
+  const [pine, court, paper, ink, ball] = palette.colors;
+  const root = document.documentElement;
+  selectedPalette = palette.id;
+
+  root.style.setProperty("--pine", pine);
+  root.style.setProperty("--court", court);
+  root.style.setProperty("--paper", paper);
+  root.style.setProperty("--card", `color-mix(in srgb, ${paper} 88%, white)`);
+  root.style.setProperty("--ink", ink);
+  root.style.setProperty("--mute", `color-mix(in srgb, ${ink} 62%, ${paper})`);
+  root.style.setProperty("--hair", `color-mix(in srgb, ${ink} 14%, ${paper})`);
+  root.style.setProperty("--ball", ball);
+
+  if (save) {
+    try {
+      localStorage.setItem(paletteStorageKey, palette.id);
+      themeStatus.textContent = `${palette.name} theme applied and saved on this device.`;
+    } catch {
+      themeStatus.textContent = `${palette.name} theme applied, but your browser could not save it.`;
+    }
+  }
+
+  themeList.querySelectorAll(".theme-picker__option").forEach((option) => {
+    option.setAttribute("aria-pressed", String(option.dataset.paletteId === selectedPalette));
+  });
+  return true;
+}
+
+function renderPalette(palette) {
+  const option = document.createElement("button");
+  option.className = "theme-picker__option";
+  option.type = "button";
+  option.dataset.paletteId = palette.id;
+  option.setAttribute("aria-label", `Apply ${palette.name} color theme`);
+  option.setAttribute("aria-pressed", String(palette.id === selectedPalette));
+
+  const swatches = document.createElement("span");
+  swatches.className = "theme-picker__swatches";
+  swatches.setAttribute("aria-hidden", "true");
+  palette.colors.forEach((color) => {
+    const swatch = document.createElement("span");
+    swatch.className = "theme-picker__swatch";
+    swatch.style.backgroundColor = color;
+    swatches.append(swatch);
+  });
+
+  const meta = document.createElement("span");
+  meta.className = "theme-picker__meta";
+  const label = document.createElement("span");
+  label.textContent = palette.name;
+  const colorCount = document.createElement("span");
+  colorCount.textContent = "5 colors";
+  meta.append(label, colorCount);
+  option.append(swatches, meta);
+  option.addEventListener("click", () => applyPalette(palette.id));
+  themeList.append(option);
+}
+
+palettes.forEach(renderPalette);
+
+try {
+  const savedPalette = localStorage.getItem(paletteStorageKey);
+  if (savedPalette && palettes.some((palette) => palette.id === savedPalette)) {
+    applyPalette(savedPalette, false);
+  } else if (savedPalette) {
+    localStorage.removeItem(paletteStorageKey);
+  }
+} catch (error) {
+  console.error("Unable to read the saved color theme. The default theme will be used.", error);
+}
+
+$("themeOpen").addEventListener("click", () => {
+  themePicker.showModal();
+});
+$("themeClose").addEventListener("click", () => themePicker.close());
+themePicker.addEventListener("click", (event) => {
+  if (event.target === themePicker) themePicker.close();
+});
 function openSheet(title, bodyHTML) {
   $("sheetTitle").textContent = title;
   $("sheetBody").innerHTML = bodyHTML;

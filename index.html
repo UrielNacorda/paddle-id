@@ -57,18 +57,29 @@
             <svg class="verified" viewBox="0 0 24 24" aria-label="Verified owner">
               <path
                 d="M12 1.8l2.5 1.7 3-.2 1.2 2.8 2.7 1.4-.4 3 1.5 2.6-1.9 2.4.1 3-2.9.9-1.8 2.4-2.8-1.1-2.8 1.1-1.8-2.4-2.9-.9.1-3-1.9-2.4 1.5-2.6-.4-3 2.7-1.4 1.2-2.8 3 .2z"
-                fill="#17553e"
+                fill="var(--court)"
               />
               <path
                 d="M8 12.3l2.7 2.7L16.2 9.5"
                 fill="none"
-                stroke="#dcea4a"
+                stroke="var(--ball)"
                 stroke-width="2.2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
               />
             </svg>
           </h1>
+          <button
+            class="icon-btn"
+            id="themeOpen"
+            type="button"
+            aria-label="Choose a color theme"
+            aria-haspopup="dialog"
+            aria-controls="themePicker"
+            title="Choose a color theme"
+          >
+            ◉
+          </button>
           <button class="icon-btn" id="replay" aria-label="Replay intro">
             ↻
           </button>
@@ -128,6 +139,18 @@
       <h3 id="sheetTitle"></h3>
       <div id="sheetBody"></div>
       <button class="btn sheet__close" id="sheetClose">Close</button>
+    </dialog>
+
+    <dialog class="theme-picker" id="themePicker" aria-labelledby="themeTitle">
+      <header class="theme-picker__header">
+        <div>
+          <h2 id="themeTitle">Choose a color theme</h2>
+          <p>Pick a palette to recolor this profile.</p>
+        </div>
+        <button class="theme-picker__close" id="themeClose" type="button" aria-label="Close color themes">×</button>
+      </header>
+      <p class="theme-picker__status" id="themeStatus" aria-live="polite">Select a palette to preview it on your profile.</p>
+      <div class="theme-picker__list" id="themeList"></div>
     </dialog>
 
     <dialog class="image-viewer" id="imageViewer" aria-label="Photo of Uriel Nacorda">

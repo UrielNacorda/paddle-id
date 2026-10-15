@@ -45,7 +45,7 @@ button {
   display: grid;
   place-items: center;
   background:
-    linear-gradient(rgba(246, 243, 232, 0.07) 1px, transparent 1px) 0 62% / 100%
+    linear-gradient(color-mix(in srgb, var(--paper) 7%, transparent) 1px, transparent 1px) 0 62% / 100%
       64px,
     radial-gradient(120% 80% at 50% 110%, var(--court), var(--pine) 65%);
   color: var(--paper);
@@ -77,9 +77,9 @@ button {
   border-radius: 50%;
   background: radial-gradient(
     circle at 35% 30%,
-    #f0f98a,
+    color-mix(in srgb, var(--ball) 72%, var(--paper)),
     var(--ball) 55%,
-    #b6c52e
+    color-mix(in srgb, var(--ball) 72%, var(--pine))
   );
   box-shadow: 0 10px 0 -4px rgba(0, 0, 0, 0.18);
   animation: volley 2.3s cubic-bezier(0.45, 0, 0.55, 1) both;
@@ -125,7 +125,7 @@ button {
   left: 78%;
   width: 30px;
   height: 38px;
-  border: 2px solid rgba(246, 243, 232, 0.9);
+  border: 2px solid color-mix(in srgb, var(--paper) 90%, transparent);
   border-radius: 50% 50% 45% 45%;
   background: var(--court);
   transform: rotate(-12deg);
@@ -161,7 +161,7 @@ button {
 .kicker {
   margin: 10px 0 0;
   font-size: 1rem;
-  color: rgba(246, 243, 232, 0.78);
+  color: color-mix(in srgb, var(--paper) 78%, transparent);
   opacity: 0;
   animation:
     fadeIn 0.9s ease 2.3s forwards,
@@ -250,7 +250,7 @@ button {
   bottom: max(28px, env(safe-area-inset-bottom));
   margin: 0;
   font-size: 0.8rem;
-  color: rgba(246, 243, 232, 0.6);
+  color: color-mix(in srgb, var(--paper) 60%, transparent);
   opacity: 0;
   animation: fadeIn 0.6s ease 4.7s forwards;
 }
@@ -271,7 +271,7 @@ button {
   justify-content: space-between;
   gap: 8px;
   padding: max(12px, env(safe-area-inset-top)) 16px 12px;
-  background: rgba(246, 243, 232, 0.92);
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
   backdrop-filter: blur(8px);
 }
 .bar__brand {
@@ -297,7 +297,7 @@ button {
 .bar__account {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 .bar__user {
   margin: 0;
@@ -322,6 +322,100 @@ button {
   background: var(--hair);
 }
 
+.theme-picker {
+  width: min(94vw, 480px);
+  max-width: none;
+  max-height: min(86dvh, 800px);
+  margin: auto;
+  padding: 18px;
+  overflow-y: auto;
+  border: 0;
+  border-radius: 18px;
+  background: var(--paper);
+  color: var(--ink);
+}
+.theme-picker::backdrop {
+  background: rgba(0, 0, 0, 0.58);
+}
+.theme-picker__header {
+  position: sticky;
+  top: -18px;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin: -18px -18px 0;
+  padding: 18px;
+  background: var(--paper);
+}
+.theme-picker__header h2 {
+  margin: 0;
+  font: 700 1.25rem var(--serif);
+}
+.theme-picker__header p {
+  margin: 3px 0 0;
+  color: var(--mute);
+  font-size: 0.86rem;
+}
+.theme-picker__close {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--card);
+  font-size: 1.5rem;
+}
+.theme-picker__status {
+  min-height: 1.4em;
+  margin: 0 0 12px;
+  color: var(--mute);
+  font-size: 0.84rem;
+}
+.theme-picker__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.theme-picker__option {
+  min-width: 0;
+  padding: 7px;
+  border: 1px solid var(--hair);
+  border-radius: 12px;
+  background: var(--card);
+  text-align: left;
+}
+.theme-picker__option[aria-pressed="true"] {
+  border: 2px solid var(--court);
+  padding: 6px;
+}
+.theme-picker__swatches {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  height: 52px;
+  overflow: hidden;
+  border-radius: 7px;
+}
+.theme-picker__swatch {
+  min-width: 0;
+}
+.theme-picker__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 7px;
+  color: var(--mute);
+  font-size: 0.73rem;
+}
+.theme-picker__meta span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .head {
   display: flex;
   align-items: center;
@@ -335,9 +429,9 @@ button {
   background: conic-gradient(
     from 210deg,
     var(--ball),
-    #3f9a73,
     var(--court),
-    #3f9a73,
+    var(--court),
+    var(--court),
     var(--ball)
   );
 }
@@ -425,10 +519,10 @@ button {
   font-size: 0.88rem;
 }
 .idcard__row + .idcard__row {
-  border-top: 1px solid rgba(246, 243, 232, 0.14);
+  border-top: 1px solid color-mix(in srgb, var(--paper) 14%, transparent);
 }
 .idcard__row span {
-  color: rgba(246, 243, 232, 0.65);
+  color: color-mix(in srgb, var(--paper) 65%, transparent);
 }
 .idcard__row b {
   text-align: right;
@@ -450,7 +544,7 @@ button {
   padding: 10px 16px;
   border: 0;
   border-radius: 10px;
-  background: #e9e6d6;
+  background: var(--hair);
   font-weight: 700;
   font-size: 0.9rem;
   transition: transform 0.12s ease;
@@ -567,7 +661,7 @@ button {
   animation: up 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .sheet::backdrop {
-  background: rgba(11, 43, 32, 0.55);
+  background: color-mix(in srgb, var(--pine) 55%, transparent);
 }
 @keyframes up {
   from {
@@ -625,7 +719,7 @@ button {
   font-weight: 700;
 }
 .contact a.alt {
-  background: #e9e6d6;
+  background: var(--hair);
   color: var(--ink);
 }
 .sheet__close {
@@ -643,7 +737,7 @@ button {
   overflow: visible;
   border: 0;
   border-radius: 14px;
-  background: #0b2b20;
+  background: var(--ink);
 }
 .image-viewer::backdrop {
   background: rgba(0, 0, 0, 0.82);
@@ -844,12 +938,12 @@ button {
 
 @media (min-width: 520px) {
   body {
-    background: #e6e3d3;
+    background: color-mix(in srgb, var(--paper) 82%, var(--ink));
   }
   .profile-page {
     background: var(--paper);
     min-height: 100dvh;
-    box-shadow: 0 0 40px rgba(11, 43, 32, 0.12);
+    box-shadow: 0 0 40px color-mix(in srgb, var(--ink) 12%, transparent);
   }
 }
 @media (max-width: 520px) {
