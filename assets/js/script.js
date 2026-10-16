@@ -64,6 +64,11 @@ const themeStatus = $("themeStatus");
 const paletteStorageKey = "paddleIdPalette";
 const palettes = [
   {
+    id: "default",
+    name: "Default Theme",
+    colors: ["#0e3a2b", "#17553e", "#f6f3e8", "#0b2b20", "#dcea4a"],
+  },
+  {
     id: "court",
     name: "Classic Court",
     colors: ["#0e3a2b", "#17553e", "#f6f3e8", "#0b2b20", "#dcea4a"],
@@ -108,6 +113,7 @@ function applyPalette(id, save = true) {
   const [pine, court, paper, ink, ball] = palette.colors;
   const root = document.documentElement;
   selectedPalette = palette.id;
+  root.dataset.palette = palette.id;
 
   root.style.setProperty("--pine", pine);
   root.style.setProperty("--court", court);
@@ -169,8 +175,9 @@ try {
   const savedPalette = localStorage.getItem(paletteStorageKey);
   if (savedPalette && palettes.some((palette) => palette.id === savedPalette)) {
     applyPalette(savedPalette, false);
-  } else if (savedPalette) {
-    localStorage.removeItem(paletteStorageKey);
+  } else {
+    if (savedPalette) localStorage.removeItem(paletteStorageKey);
+    applyPalette(palettes[0].id, false);
   }
 } catch (error) {
   console.error("Unable to read the saved color theme. The default theme will be used.", error);

@@ -1127,6 +1127,60 @@ button {
     gap: 14px;
   }
 }
+
+:root[data-palette="default"] {
+  color-scheme: light;
+}
+:root[data-palette="default"] body {
+  color: var(--ink);
+  background: var(--paper);
+}
+:root[data-palette="default"] .profile-page {
+  background: var(--paper);
+  color: var(--ink);
+}
+:root[data-palette="default"] .bar {
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+}
+:root[data-palette="default"] .bar__brand,
+:root[data-palette="default"] .icon-btn {
+  color: var(--ink);
+}
+:root[data-palette="default"] .bar__brand span span {
+  color: var(--court);
+}
+:root[data-palette="default"] .bar__location,
+:root[data-palette="default"] .profile-handle,
+:root[data-palette="default"] .profile-role,
+:root[data-palette="default"] .stats span {
+  color: var(--mute);
+}
+:root[data-palette="default"] .icon-btn:active {
+  color: var(--paper);
+}
+:root[data-palette="default"] .stats li {
+  background: transparent;
+}
+:root[data-palette="default"] .idcard {
+  background: var(--pine);
+  color: var(--paper);
+}
+:root[data-palette="default"] .idcard__details {
+  border-top: 1px solid color-mix(in srgb, var(--paper) 24%, transparent);
+}
+:root[data-palette="default"] .idcard__details span {
+  color: color-mix(in srgb, var(--paper) 72%, transparent);
+}
+:root[data-palette="default"] .btn--main {
+  border: 0;
+  border-radius: 10px;
+  background: var(--court);
+  color: var(--paper);
+}
+:root[data-palette="default"] .grid-tabs .on {
+  color: var(--court);
+  border-top-color: var(--court);
+}
 @media (min-width: 1400px) {
   .profile-page {
     grid-template-columns: 300px minmax(0, 1fr);
