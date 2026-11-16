@@ -200,7 +200,6 @@ function openSheet(title, bodyHTML) {
 const id = new URLSearchParams(location.search).get("id");
 if (id) {
   $("paddleNo").textContent = id;
-  $("idNo").textContent = id;
 }
 
 // ---------- Build social links + grid ----------

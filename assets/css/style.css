@@ -496,7 +496,7 @@ button {
 
 .stats {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: clamp(10px, 2.5vw, 18px);
   margin: 18px clamp(16px, 5.2vw, 40px) 0;
   padding: 0;
@@ -522,7 +522,7 @@ button {
   font-size: clamp(0.72rem, 2.3vw, 1.15rem);
 }
 
-/* Paddle ID card */
+/* Owner verification */
 .idcard {
   margin: 32px clamp(16px, 5.2vw, 40px) 0;
   padding: clamp(20px, 5.8vw, 44px);
@@ -530,17 +530,15 @@ button {
   background: var(--ball);
   color: var(--ink);
 }
-.idcard__top,
-.idcard__details {
+.idcard__top {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 12px;
-}
-.idcard__top {
   font-size: clamp(0.72rem, 2.3vw, 1.2rem);
   font-weight: 700;
   letter-spacing: 0.1em;
+  text-align: center;
   text-transform: uppercase;
 }
 .idcard__verified {
@@ -552,29 +550,6 @@ button {
 .idcard__verified span {
   font-size: 1.3em;
 }
-.idcard__number {
-  display: block;
-  margin: 12px 0 16px;
-  font-size: clamp(6rem, 22vw, 11rem);
-  font-weight: 700;
-  letter-spacing: -0.075em;
-  line-height: 0.9;
-}
-.idcard__details {
-  min-height: 48px;
-  padding-top: 14px;
-  border-top: 3px solid color-mix(in srgb, var(--ink) 90%, transparent);
-  font-size: clamp(0.78rem, 2.7vw, 1.4rem);
-}
-.idcard__details strong {
-  font-weight: 700;
-}
-.idcard__details span {
-  text-align: right;
-  white-space: nowrap;
-  font-weight: 400;
-}
-
 .actions {
   display: flex;
   gap: 8px;
@@ -1055,13 +1030,6 @@ button {
     padding: clamp(20px, 2vw, 28px);
     border-radius: 28px;
   }
-  .idcard__number {
-    margin: 6px 0 10px;
-    font-size: clamp(96px, 10vw, 128px);
-  }
-  .idcard__details {
-    font-size: clamp(0.85rem, 1.3vw, 1rem);
-  }
   .stats {
     grid-area: stats;
     justify-self: center;
@@ -1165,12 +1133,6 @@ button {
   background: var(--pine);
   color: var(--paper);
 }
-:root[data-palette="default"] .idcard__details {
-  border-top: 1px solid color-mix(in srgb, var(--paper) 24%, transparent);
-}
-:root[data-palette="default"] .idcard__details span {
-  color: color-mix(in srgb, var(--paper) 72%, transparent);
-}
 :root[data-palette="default"] .btn--main {
   border: 0;
   border-radius: 10px;
@@ -1215,10 +1177,6 @@ button {
   }
   .idcard__verified {
     gap: 4px;
-  }
-  .idcard__details {
-    gap: 6px;
-    font-size: 0.7rem;
   }
 }
 @media (prefers-reduced-motion: reduce) {
